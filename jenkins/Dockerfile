@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g 102 docker || true
+RUN groupadd -g 113 docker || true
 RUN usermod -aG docker jenkins
 
 # Install Trivy
