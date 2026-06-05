@@ -16,6 +16,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN groupadd -g 102 docker || true
+RUN usermod -aG docker jenkins
+
 # Install Trivy
 RUN wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | \
     gpg --dearmor -o /usr/share/keyrings/trivy.gpg && \
