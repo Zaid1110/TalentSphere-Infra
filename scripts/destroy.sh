@@ -1,9 +1,9 @@
 #!/bin/bash
 
-helm uninstall talentsphere || true
+eksctl delete cluster \
+--name talentsphere-eks \
+--region us-east-1
 
-helm uninstall monitoring -n monitoring || true
+cd terraform
 
-helm uninstall ingress-nginx -n ingress-nginx || true
-
-eksctl delete cluster --name talentsphere-eks --region us-east-1
+terraform destroy -auto-approve
